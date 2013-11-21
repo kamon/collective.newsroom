@@ -17,3 +17,16 @@ class IPressRelease(Interface):
     """
 
 
+class IPressClip(Interface):
+    """
+    """
+
+
+class INewsRoom(Interface):
+    """
+    """
+
+class INewsRoomItemCollection(Interface):
+    """
+    """
+    # Ideally we should use standard Collection, but it is not yet Folderish!!!

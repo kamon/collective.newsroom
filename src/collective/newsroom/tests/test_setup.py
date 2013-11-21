@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest2 as unittest
 
 from Products.CMFCore.utils import getToolByName
@@ -6,7 +7,7 @@ from collective.newsroom.testing import \
     COLLECTIVE_NEWSROOM_INTEGRATION_TESTING
 
 
-class TestExample(unittest.TestCase):
+class NewsRoomSetupTest(unittest.TestCase):
 
     layer = COLLECTIVE_NEWSROOM_INTEGRATION_TESTING
 
@@ -23,3 +24,7 @@ class TestExample(unittest.TestCase):
         installed = [p['id'] for p in self.qi_tool.listInstalledProducts()]
         self.assertTrue(pid in installed,
                         'package appears not to have been installed')
+
+
+#def test_suite():
+#    return unittest.defaultTestLoader.loadTestsFromName(__name__)

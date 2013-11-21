@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<object name="PressRelease" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="PressClip" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Press Release</property>
+ <property name="title" i18n:translate="">Press Clip</property>
  <property name="description" i18n:translate=""></property>
  <property name="icon_expr"></property>
- <property name="factory">PressRelease</property>
- <property name="add_view_expr">string:${folder_url}/++add++PressRelease</property>
+ <property name="factory">PressClip</property>
+ <property name="add_view_expr">string:${folder_url}/++add++PressClip</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
@@ -18,7 +18,7 @@
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">plone.app.contenttypes.addNewsItem</property>
- <property name="klass">collective.newsroom.content.PressRelease</property>
+ <property name="klass">collective.newsroom.content.PressClip</property>
  <property name="behaviors">
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
   <element value="plone.app.content.interfaces.INameFromTitle"/>
@@ -28,12 +28,12 @@
   <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
   <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
 
-  <element value="collective.newsroom.behaviors.IPressReleaseMetadata"/>
+  <element value="collective.newsroom.behaviors.IPressClipMetadata"/>
 
  </property>
  <property name="schema"></property>
  <property name="model_source"></property>
- <property name="model_file">collective.newsroom.schema:press_release.xml</property>
+ <property name="model_file">collective.newsroom.schema:press_clip.xml</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>
  <alias from="sharing" to="@@sharing"/>

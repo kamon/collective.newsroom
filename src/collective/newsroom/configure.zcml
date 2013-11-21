@@ -19,12 +19,33 @@
        in Plone -->
   <genericsetup:registerProfile
       name="default"
-      title="A NewsRoom management  Plone add-on based on Dexterity. Inspired by Products.PressRoom."
+      title="NewsRoom Management"
       directory="profiles/default"
-      description="Extension profile for A NewsRoom management  Plone add-on based on Dexterity. Inspired by Products.PressRoom."
+      description="Extension profile for NewsRoom management add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <include file="subscribers.zcml" />
+
+  <plone:behavior
+    title="PressRelease Metadata"
+    description="Fields for the special information that qualifies Press Releases"
+    provides=".behaviors.IPressReleaseMetadata"
+    factory=".behaviors.PressReleaseMetadata"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behaviors.IPressReleaseMetadata"
+    />
+
+  <plone:behavior
+    title="PressClip Metadata"
+    description="Fields for the special information that qualifies Press Clips"
+    provides=".behaviors.IPressClipMetadata"
+    factory=".behaviors.PressClipMetadata"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".behaviors.IPressClipMetadata"
+    />
+
 
 </configure>

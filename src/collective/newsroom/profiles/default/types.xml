@@ -8,4 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
  <object meta_type="Dexterity FTI" name="PressRelease" />
+ <object meta_type="Dexterity FTI" name="PressClip" />
+ <object meta_type="Dexterity FTI" name="NewsRoom" />
+ <object meta_type="Dexterity FTI" name="NewsRoomItemCollection" />
 </object>
