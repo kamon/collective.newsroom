@@ -40,6 +40,8 @@ setup(name='collective.newsroom',
           'plone.app.dexterity',
           'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-
+          'plone.app.contenttypes',
+          'collective.contact.core',
       ],
       extras_require={
           'test': [
