@@ -10,6 +10,9 @@ from plone.autoform.interfaces import IFormFieldProvider
 
 from collective.newsroom import MessageFactory as _
 
+#from collective.contact.widget.schema import ContactChoice, ContactList
+#from collective.contact.widget.source import ContactSourceBinder
+
 
 ## PressRelease Metadata
 
@@ -33,8 +36,16 @@ class IPressReleaseMetadata(model.Schema):
         required=True,
     )
 
-
     #releaseContacts --> see plone.app.relationfield --> relations with PressContact contents.
+#     releaseContacts = ContactList(
+#         title=_(u"release Contacts"),
+#         description=u"",
+#         value_type=ContactChoice(
+#                     description=_("Search and attach press contacts"),
+#                     source=ContactSourceBinder(portal_type=("person",)),),
+#         required=False,
+#         addlink=False,
+#     )
     
 
 alsoProvides(IPressReleaseMetadata, IFormFieldProvider)

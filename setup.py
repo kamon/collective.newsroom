@@ -41,7 +41,8 @@ setup(name='collective.newsroom',
           'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-
           'plone.app.contenttypes',
-          'collective.contact.core',
+          #'collective.contact.core',
+          #'collective.contact.widget',
       ],
       extras_require={
           'test': [
