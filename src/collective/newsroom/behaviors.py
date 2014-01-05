@@ -19,19 +19,19 @@ from collective.newsroom import MessageFactory as _
 class IPressReleaseMetadata(model.Schema):
 
     releaseTiming = schema.TextLine(
-        title=_(u"releaseTiming"),
+        title=_(u"Release Timing"),
         description=u'''When should this release be distributed (e.g. FOR IMMEDIATE RELEASE and HOLD FOR RELEASE UNTIL MM/DD/YYYY)''',
         required=False,
     )
 
     releaseLocation = schema.TextLine(
-        title=_(u"releaseLocation"),
+        title=_(u"Release Location"),
         description=u'''Typically press releases have an associated location in a common format (i.e. City, State)''',
         required=False,
     )
 
     releaseDate = schema.Datetime(
-        title=_(u"release Date"),
+        title=_(u"Release Date"),
         description=u"Provide a date for when this press release will be distributed",
         required=True,
     )

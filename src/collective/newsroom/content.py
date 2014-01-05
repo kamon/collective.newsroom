@@ -12,6 +12,7 @@ from zope.interface import implements
 from collective.newsroom.interfaces import (
     IPressRelease,
     IPressClip,
+    IPressContact,
     INewsRoom,
 )
 
@@ -29,6 +30,9 @@ class PressRelease(Item):
 class PressClip(Item):
     implements(IPressClip)
 
+
+class PressContact(Item):
+    implements(IPressContact)
 
 
 
@@ -76,6 +80,7 @@ class NewsRoom(Container):
             self.invokeFactory("Folder", 'press-releases')
             obj = self['press-releases']
 
+            # FIXME on the way utranslate() is used...
             obj.setTitle(utranslate('newsroom', 'Press Releases', context=self))
             obj.setDescription(utranslate('pressroom', 'Our press releases', context=self))
             
@@ -89,44 +94,59 @@ class NewsRoom(Container):
             self.invokeFactory("Folder", 'press-clips')
             obj = self['press-clips']
 
+            # FIXME on the way utranslate() is used...
             obj.setTitle(utranslate('newsroom', 'Press Clips', context=self))
             obj.setDescription(utranslate('pressroom', 'Our press clips', context=self))
 
             addCollectionAsListingPage(obj, obj.Title(), ['PressClip'])
             _setup_constrains(obj, ['PressClip'])
 
-
             _publish(obj)
             obj.reindexObject()
 
         if 'press-contacts' not in self.objectIds():
+            self.invokeFactory("Folder", 'press-contacts')
+            obj = self['press-contacts']
 
-            # The Press Contacts directory settings...
-            # FIXME: Look for the conventional position types...
-            position_types = [{'name': u'Journalist', 'token': u'journalist'},
-                              {'name': u'Communication Officer', 'token': u'communication_officer'},
-                              {'name': u'Principal', 'token': u'principal'},
-                             ]
+            # FIXME on the way utranslate() is used...
+            obj.setTitle(utranslate('newsroom', 'Press Contacts', context=self))
+            obj.setDescription(utranslate('pressroom', 'Our press contacts', context=self))
 
-            # FIXME: Look for the conventional organization types...
-            organization_types = [{'name': u'Media House', 'token': u'media_house'},
-                                  {'name': u'PR Agency', 'token': u'pr_agency'},
-                                  {'name': u'Internal Marketing Department', 'token': u'internal_marketing_department'},
-                                 ]
+            addCollectionAsListingPage(obj, obj.Title(), ['PressContact'])
+            _setup_constrains(obj, ['PressContact'])
 
-            # FIXME: Do we need this ? Make it optional or find a meaningful org level ?
-            organization_levels = [{'name': u'Any', 'token': u'any'},
-                                  ]
+            _publish(obj)
+            obj.reindexObject()
 
-            params = {'title': u"Press Contacts",
-              'position_types': position_types,
-              'organization_types': organization_types,
-              'organization_levels': organization_levels,
-              }
-        
-            self.invokeFactory('directory', 'press-contacts', **params)
-            directory = self['press-contacts']
 
-            _publish(directory)
+#         if 'press-contacts' not in self.objectIds():
+# 
+#             # The Press Contacts directory settings...
+#             # FIXME: Look for the conventional position types...
+#             position_types = [{'name': u'Journalist', 'token': u'journalist'},
+#                               {'name': u'Communication Officer', 'token': u'communication_officer'},
+#                               {'name': u'Principal', 'token': u'principal'},
+#                              ]
+# 
+#             # FIXME: Look for the conventional organization types...
+#             organization_types = [{'name': u'Media House', 'token': u'media_house'},
+#                                   {'name': u'PR Agency', 'token': u'pr_agency'},
+#                                   {'name': u'Internal Marketing Department', 'token': u'internal_marketing_department'},
+#                                  ]
+# 
+#             # FIXME: Do we need this ? Make it optional or find a meaningful org level ?
+#             organization_levels = [{'name': u'Any', 'token': u'any'},
+#                                   ]
+# 
+#             params = {'title': u"Press Contacts",
+#               'position_types': position_types,
+#               'organization_types': organization_types,
+#               'organization_levels': organization_levels,
+#               }
+#         
+#             self.invokeFactory('directory', 'press-contacts', **params)
+#             directory = self['press-contacts']
+# 
+#             _publish(directory)
 
         transaction.savepoint()

@@ -22,6 +22,11 @@ class IPressClip(Interface):
     """
 
 
+class IPressContact(Interface):
+    """
+    """
+
+
 class INewsRoom(Interface):
     """
     """

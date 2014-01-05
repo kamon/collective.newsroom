@@ -1,0 +1,24 @@
+<model xmlns="http://namespaces.plone.org/supermodel/schema"
+       xmlns:indexer="http://namespaces.plone.org/supermodel/indexer"
+       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+       i18n:domain="plone">
+  <schema>
+    <field name="jobtitle" type="zope.schema.TextLine">
+      <default></default>
+      <description>Enter the official job title of the press contact 
+                     (i.e. Chief Technology Officer, Executive Director, Director of Human Resources).
+      </description>
+      <title>Job Title</title>
+    </field>
+
+
+
+    <field name="text" type="plone.app.textfield.RichText" indexer:searchable="true">
+      <description />
+      <required>False</required>
+        <description>A description of the press contact (such as their focus areas, job responsibilities, expertise, etc.)
+        </description>
+        <title>Description</title>
+    </field>
+  </schema>
+</model>
